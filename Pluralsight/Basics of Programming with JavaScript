@@ -1,0 +1,53 @@
+//Finding expressions
+
+//Orginal
+a = b * 2 + foo(c + 3);
+
+//With expressions
+[[a] = [[[b] * [2]] + [[foo]([[c] + [3]])]]];
+
+//Implicit
+
+a = 2 + "";
+
+//Explicit
+a = String(3);
+b = Number("42");
+
+//Code Challenge
+
+//Declare Const: phone cost, acesory cost, mental limit, tax
+
+var phoneCost = 100;
+var accessoryCost = 20;
+var mentalLimit = 150;
+var salesTax = .05;
+var purchaseAmount = 0;
+
+var bankAccount = prompt("How much is in your bank account?", "100");
+
+console.log(bankAccount);
+
+function tax(){
+	purchaseAmount += purchaseAmount * salesTax;
+	console.log('$' + purchaseAmount.toFixed(2));
+}
+
+while(bankAccount >= phoneCost * (1 + salesTax)){
+	purchaseAmount += phoneCost;
+	while ((purchaseAmount + accessoryCost) * (1 + salesTax) <= mentalLimit){
+		if ((purchaseAmount + accessoryCost) * (1 + salesTax) <= bankAccount){
+			purchaseAmount += accessoryCost;
+		} else {
+			break;
+		}
+	}
+	tax();
+	bankAccount -= purchaseAmount;
+	purchaseAmount = 0;
+}
+//Declare formating function
+//Declare variable: bank account
+
+//Loop accessory to threshold
+//Loop phone purchase to bank account
